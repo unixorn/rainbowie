@@ -5,7 +5,7 @@ My personal theme for oh-my-zsh inspired by LukeSmithxyz own
 
 
 ### Used on the image: 
-  - DejaVu Sans Mono Nerd Font Complete. 
+  - Font: DejaVu Sans Mono Nerd Font Complete. 
   - Terminal: termite
   - Colors: Nord
 
