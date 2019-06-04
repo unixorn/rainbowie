@@ -1,5 +1,5 @@
 # rainbowie
-My personal theme for oh-my-zsh
+My personal theme for oh-my-zsh inspired by LukeSmithxyz own
 
 ![alt text](https://raw.githubusercontent.com/druskus20/rainbowie/master/screenshot.png)
 
