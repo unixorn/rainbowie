@@ -11,7 +11,36 @@
 setopt prompt_subst
 # This needs to be in simple quotes
 # https://unix.stackexchange.com/questions/32124/set-variables-in-zsh-precmd-and-reference-them-in-the-prompt
-PROMPT='%(?:%B%F{green}✓:%B%F{red}✕) ' # ✓ or ✕ depending on last command 
-PROMPT+='%B%F{red}[%F{yellow}%n%F{green}@%F{blue}%m %F{magenta}%2.%f%b' # [user@host path
+PROMPT='%(?:%B%F{green}✓:%B%F{red}✕)%f%b ' # ✓ or ✕ depending on last command 
+PROMPT+='%B%F{red}[%F{yellow}%n%F{green}@%F{blue}%m%f%b %F{magenta}%2.%f%b' # [user@host path
 PROMPT+='$(git rev-parse --is-inside-work-tree &>/dev/null && echo " \ue702")' # git symbol, if inside a repo
 PROMPT+='%B%F{red}]%f%b ➜ ' # ] ➜ 
+
+# Deprecated syntax
+# PROMPT='%(?:%{$fg_bold[green]%}✓:%{$fg_bold[red]%}✕) '
+# PROMPT+='%{$fg_bold[red]%}[%{$fg_bold[yellow]%}%n%{$fg_bold[green]%}@%{$fg_bold[blue]%}%m %{$fg_bold[magenta]%}%2.%{$reset_color%}'
+# PROMPT+='$(git rev-parse --is-inside-work-tree &>/dev/null && echo " \ue0a0")'
+# PROMPT+='%{$fg_bold[red]%}]%{$reset_color%} ➜ '
+
+
+# To do: 
+# 1) Use git-status because its very fast compared with the default one
+# source ~/gitstatus/gitstatus.plugin.zsh
+
+#function my_set_prompt() {
+#  PROMPT='%~# '
+#  RPROMPT=''
+
+#  if gitstatus_query MY && [[ $VCS_STATUS_RESULT == ok-sync ]]; then
+#    RPROMPT=${${VCS_STATUS_LOCAL_BRANCH:-@${VCS_STATUS_COMMIT}}//\%/%%}  # escape %
+#    [[ $VCS_STATUS_HAS_STAGED    == 1 ]] && RPROMPT+='+'
+#    [[ $VCS_STATUS_HAS_UNSTAGED  == 1 ]] && RPROMPT+='!'
+#    [[ $VCS_STATUS_HAS_UNTRACKED == 1 ]] && RPROMPT+='?'
+#  fi
+
+#  setopt noprompt{bang,subst} promptpercent  # enable/disable correct prompt expansions
+#}
+
+#gitstatus_stop MY && gitstatus_start MY
+#autoload -Uz add-zsh-hook
+#add-zsh-hook precmd my_set_prompt
