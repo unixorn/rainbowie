@@ -9,12 +9,53 @@
 
 # This allows expansions
 setopt prompt_subst
+
+# This part is for the virtualenv indicator
+export VIRTUAL_ENV_DISABLE_PROMPT=yes
+
+function virtenv_indicator {
+    if [[ -z $VIRTUAL_ENV ]] then
+        psvar[1]=''
+    else
+        psvar[1]="${VIRTUAL_ENV##*/}"
+    fi
+}
+
+
+# !!! does not reset on zsh re-login (typing zsh).
+# need to fix it in zshrc or something
+
+autoload -Uz add-zsh-hook
+#add-zsh-hook precmd my_set_prompt
+
+add-zsh-hook precmd virtenv_indicator
+
+
 # This needs to be in simple quotes
 # https://unix.stackexchange.com/questions/32124/set-variables-in-zsh-precmd-and-reference-them-in-the-prompt
-PROMPT='%(?:%B%F{green}✓:%B%F{red}✕)%f%b ' # ✓ or ✕ depending on last command 
+PROMPT='%(1V.(%1v) .)'
+
+PROMPT+='%(?:%B%F{green}✓:%B%F{red}✕)%f%b ' # ✓ or ✕ depending on last command 
 PROMPT+='%B%F{red}[%B%F{yellow}%n%B%F{green}@%B%F{blue}%m%f%b %B%F{magenta}%2.%f%b' # [user@host path
-PROMPT+='$(git rev-parse --is-inside-work-tree &>/dev/null && echo " \ue702")' # git symbol, if inside a repo
+PROMPT+='$(git rev-parse --is-inside-work-tree &>/dev/null && echo " ")' # git symbol, if inside a repo
 PROMPT+='%B%F{red}]%f%b ➜ ' # ] ➜ 
+
+#RPROMPT=''
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 # Deprecated syntax
 # PROMPT='%(?:%{$fg_bold[green]%}✓:%{$fg_bold[red]%}✕) '
