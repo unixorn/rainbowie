@@ -15,7 +15,7 @@ My personal theme for oh-my-zsh inspired by LukeSmithxyz own
 Its recommended to use nerd-fonts complete. 
 
 ## Installation
-Simply drop the .zsh-theme file inside <OMZSH>/custom/themes/
+Source the file from your .zshrc with `source PATH`
 
 
 
