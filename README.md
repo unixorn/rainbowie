@@ -1,5 +1,7 @@
 # rainbowie
 
+![alt text](https://raw.githubusercontent.com/druskus20/rainbowie/master/logo.png)
+
 My personal theme for oh-my-zsh inspired by LukeSmithxyz own
 
 ![alt text](https://raw.githubusercontent.com/druskus20/rainbowie/master/screenshot.png)
@@ -16,9 +18,14 @@ It's recommended to use nerd-fonts complete.
 
 ## Installation
 
+### Plain zsh
+
+Source the file from your .zshrc with `source PATH`
+
 ### Oh-My-Zsh
 
 Simply drop the .zsh-theme file inside <OMZSH>/custom/themes/
+
 
 ### zgen
 
